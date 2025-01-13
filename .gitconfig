@@ -13,6 +13,28 @@
 	meld = difftool --dir-diff
 	fp = !git fetch --prune && !git branch -r | awk "{print $1}" | egrep -v -f /dev/fd/0 <(!git branch -vv | grep origin) | awk "{print $1}" | xargs !git branch -d
 
+[push]
+	default = current
+
+[pull]
+	default = current
+	rebase = true
+
+[merge]
+	tool = meld
+
+[mergetool]
+	prompt = false
+
+[gpg]
+	program = gpg
+
+[core]
+	excludesfile = /Users/gas/.gitignore
+
+[credential]
+	helper = store
+
 [color]
 	ui = auto
 	diff = auto
@@ -30,11 +52,3 @@
 	old = red bold
 	new = green bold
 
-[push]
-	default = current
-
-[pull]
-	default = current
-
-[merge]
-	tool = meld
